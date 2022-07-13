@@ -10,8 +10,7 @@
 			"path": "project"
 		},
 		{
-			"name": "go-microservices",
-			"path": "."
+			"path": "authentication-service"
 		}
 	],
 	"settings": {
