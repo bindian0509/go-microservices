@@ -50,8 +50,6 @@ func main() {
 		Models: data.New(client),
 	}
 
-	// Register the RPC Server
-	err = rpc.Register(new(RPCServer))
 	go app.rpcListen()
 	
 	// start web server
