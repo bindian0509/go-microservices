@@ -296,7 +296,7 @@ func (app *Config) LogViaGRPC(w http.ResponseWriter, r *http.Request) {
 	defer cancel()
 
 	_, err = c.WriteLog(ctx, &logs.LogRequest{
-		LogEntry: &logs.Log {
+		LogEntry: &logs.Log{
 			Name: requestPayload.Log.Name,
 			Data: requestPayload.Log.Data,
 		},
