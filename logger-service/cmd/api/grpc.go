@@ -11,6 +11,7 @@ import (
 	"google.golang.org/grpc"
 )
 
+
 type LogServer struct {
 	logs.UnimplementedLogServiceServer
 	Models data.Models
@@ -20,7 +21,7 @@ func (l *LogServer) WriteLog(ctx context.Context, req *logs.LogRequest) (*logs.L
 	input := req.GetLogEntry()
 
 	// write the log
-	logEntry := data.LogEntry{
+	logEntry := data.LogEntry {
 		Name: input.Name,
 		Data: input.Data,
 	}
