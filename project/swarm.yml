@@ -12,10 +12,12 @@ services:
       - caddy_data:/data
       - caddy_config:/config
   front-end:
-    image: bindian0509/front-end:latest
+    image: bindian0509/front-end:1.0.2
     deploy:
       mode: replicated
-      replicas: 1
+      replicas: 2
+    environment:
+      BROKER_URL: "http://backend"
   broker-service:
     image: bindian0509/broker-service:1.0.1
     deploy:
@@ -83,10 +85,9 @@ services:
       - ./db-data/mongo/:/data/db
 
   postgres:
-    image: 'postgres:14.0'
+    image: 'postgres:14.2'
     ports:
       - '5432:5432'
-    restart: always
     deploy:
       mode: replicated
       replicas: 1
