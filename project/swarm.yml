@@ -1,5 +1,16 @@
 version: '3'
 services:
+  caddy:
+    image: bindian0509/micro-caddy:latest
+    deploy:
+      mode: replicated
+      replicas: 1
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
   front-end:
     image: bindian0509/front-end:latest
     deploy:
@@ -85,3 +96,8 @@ services:
       POSTGRES_DB: users
     volumes:
       - ./db-data/postgres/:/var/lib/postgresql/data/
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
+
