@@ -1,5 +1,10 @@
 version: '3'
 services:
+  front-end:
+    image: bindian0509/front-end:latest
+    deploy:
+      mode: replicated
+      replicas: 1
   broker-service:
     image: bindian0509/broker-service:1.0.1
     deploy:
