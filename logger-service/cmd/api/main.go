@@ -50,6 +50,8 @@ func main() {
 		Models: data.New(client),
 	}
 
+	err = rpc.Register(new(RPCServer))
+	
 	go app.rpcListen()
 
 	go app.gRPCListen()

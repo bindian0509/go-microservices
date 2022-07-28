@@ -1,8 +1,4 @@
 version: '3'
-
-# NOTE: for all of the images for the 5 microservices, you'll
-# have to change the image: <name> part to whatever your image names are
-
 services:
   broker-service:
     image: bindian0509/broker-service:latest
