@@ -1,9 +1,7 @@
 version: '3'
 services:
   broker-service:
-    image: bindian0509/broker-service:latest
-    ports:
-      - '8080:80'
+    image: bindian0509/broker-service:1.0.1
     deploy:
       mode: replicated
       replicas: 1
