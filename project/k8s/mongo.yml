@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: broker-service
+  name: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: broker-service
+      app: mongo
   template:
     metadata:
       labels:
-        app: broker-service
+        app: mongo
     spec:
       containers:
-      - name: broker-service
-        image: "tsawler/broker-service:1.0.1"
+      - name: mongo
+        image: "mongo:4.2.17-bionic"
         resources:
           requests:
             memory: "64Mi"
@@ -22,20 +22,27 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+        env:
+          - name: MONGO_INITDB_DATABASE
+            value: "logs"
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: "admin"
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: "password"
         ports:
-          - containerPort: 8080
+          - containerPort: 27017
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: broker-service
+  name: mongo
 spec:
   selector:
-    app: broker-service
+    app: mongo
   ports:
     - protocol: TCP
       name: main-port
-      port: 8080
-      targetPort: 8080
+      port: 27017
+      targetPort: 27017
