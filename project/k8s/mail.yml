@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mailer-service
-        image: "tsawler/mail-service:1.0.0"
+        image: "bindian0509/mail-service:latest"
         resources:
           requests:
             memory: "64Mi"
@@ -36,9 +36,9 @@ spec:
           - name: MAIL_PASSWORD
             value: ""
           - name: FROM_NAME
-            value: "John Smith"
+            value: "Agent Smith"
           - name: FROM_ADDRESS
-            value: "admin@example.com"
+            value: "smith@matrix.com"
         ports:
           - containerPort: 80
 
